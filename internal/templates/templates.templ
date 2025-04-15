@@ -1,0 +1,59 @@
+package templates
+
+templ Page(title string) {
+	<!DOCTYPE html>
+	<html lang="ru">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<title>{ title }</title>
+			<link rel="stylesheet" href="/assets/stylesheets/index.css"/>
+		</head>
+		<body>
+			@header()
+		</body>
+	</html>
+}
+
+templ header() {
+	<header class="bg-white shadow-sm sticky top-0 z-50">
+		<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between h-16 items-center">
+				@logo()
+				@navButtons()
+				@rightSide()
+			</div>
+		</nav>
+	</header>
+}
+
+templ logo() {
+	<div class="flex items-center">
+		<div class="flex-shrink-0 bg-purple-600 text-white px-3 py-2 rounded-lg">
+			<span class="font-bold text-xl">MF</span>
+		</div>
+	</div>
+}
+
+templ navButtons() {
+	<div class="hidden md:flex space-x-8">
+		@button("Каталог")
+		@button("Корзина")
+		@button("Избранное")
+	</div>
+}
+
+templ button(name string) {
+	<a href="#" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors">
+		{ name }
+	</a>
+}
+
+templ rightSide() {
+	<div class="flex items-center space-x-4">
+		@iconButtons()
+	</div>
+}
+
+templ iconButtons() {
+}
