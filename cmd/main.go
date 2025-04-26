@@ -3,12 +3,12 @@ package main
 import (
 	"net/http"
 
-	"github.com/go-microfrontend/host-page/internal/templates"
+	"github.com/go-microfrontend/host-page/internal/templates/layout"
 )
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		page := templates.Page("MF")
+		page := layout.Page()
 		page.Render(r.Context(), w)
 	})
 

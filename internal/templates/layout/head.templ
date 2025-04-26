@@ -1,0 +1,20 @@
+package layout
+
+import "github.com/go-microfrontend/host-page/internal/templates"
+
+templ head() {
+	<head>
+		@meta()
+		<title>{ templates.Marketplace }</title>
+		@links()
+	</head>
+}
+
+templ meta() {
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+}
+
+templ links() {
+	<link rel="stylesheet" href="/assets/stylesheets/index.css"/>
+}

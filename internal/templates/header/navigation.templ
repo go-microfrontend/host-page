@@ -1,0 +1,47 @@
+package header
+
+import "github.com/go-microfrontend/host-page/internal/templates/icons"
+
+type navButton struct {
+	name string
+	icon icons.Icon
+}
+
+templ (nb *navButton) use(withName bool) {
+	<a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors">
+		@nb.icon.Use()
+		if withName {
+			<span class="ml-2">{ nb.name }</span>
+		}
+	</a>
+}
+
+templ navigation() {
+	{{
+	navButtons := []navButton{
+		{"Каталог", icons.Grid},
+		{"Корзина", icons.ShoppingBag},
+		{"Избранное", icons.Heart},
+	}
+	}}
+	<div class="flex-1 overflow-x-auto px-2 md:px-0">
+		<div class="hidden md:flex space-x-8 min-w-max justify-center">
+			for _, nb := range navButtons {
+				@nb.use(true)
+			}
+		</div>
+		<div class="md:hidden flex space-x-6 min-w-max justify-center">
+			for _, nb := range navButtons {
+				@nb.use(false)
+			}
+		</div>
+	</div>
+}
+
+templ right() {
+	<div class="flex items-center space-x-4">
+		<button class="p-2 text-gray-400 hover:text-gray-500">
+			@icons.User.Use()
+		</button>
+	</div>
+}

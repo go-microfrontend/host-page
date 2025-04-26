@@ -1,0 +1,13 @@
+package layout
+
+import (
+	"github.com/go-microfrontend/host-page/internal/templates/header"
+	"github.com/go-microfrontend/host-page/internal/templates/icons"
+)
+
+templ body() {
+	<body>
+		@header.Header()
+		@icons.Icons()
+	</body>
+}
