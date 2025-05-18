@@ -1,3 +1,3 @@
 package templates
 
-const Marketplace = "Govno"
+const Marketplace = "Marketplace"

@@ -10,6 +10,6 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o app ./cmd
 FROM alpine:latest
 WORKDIR /app
 COPY --from=builder /app/app .
-COPY --from=builder /app/assets/stylesheets/ assets/stylesheets/
+COPY --from=builder /app/assets/ assets/
 
 CMD [ "./app" ]

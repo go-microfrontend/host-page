@@ -1,9 +1,9 @@
 package layout
 
-templ Page() {
+templ Page(url string) {
 	<!DOCTYPE html>
-	<html lang="ru">
+	<html>
 		@head()
-		@body()
+		@body(url)
 	</html>
 }

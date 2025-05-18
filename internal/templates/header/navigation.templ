@@ -5,10 +5,17 @@ import "github.com/go-microfrontend/host-page/internal/templates/icons"
 type navButton struct {
 	name string
 	icon icons.Icon
+	url  string
 }
 
 templ (nb *navButton) use(withName bool) {
-	<a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors">
+	<a
+		href="#"
+		hx-get={ nb.url }
+		hx-target="#content"
+		hx-replace-url="true"
+		class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-violet-600 transition-colors"
+	>
 		@nb.icon.Use()
 		if withName {
 			<span class="ml-2">{ nb.name }</span>
@@ -19,9 +26,9 @@ templ (nb *navButton) use(withName bool) {
 templ navigation() {
 	{{
 	navButtons := []navButton{
-		{"Каталог", icons.Grid},
-		{"Корзина", icons.ShoppingBag},
-		{"Избранное", icons.Heart},
+		{"Каталог", icons.Grid, "/catalogue"},
+		// {"Корзина", icons.ShoppingBag},
+		// {"Избранное", icons.Heart},
 	}
 	}}
 	<div class="flex-1 overflow-x-auto px-2 md:px-0">

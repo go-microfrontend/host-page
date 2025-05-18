@@ -1,13 +1,22 @@
 package layout
 
 import (
+	"github.com/go-microfrontend/host-page/internal/templates/content"
 	"github.com/go-microfrontend/host-page/internal/templates/header"
 	"github.com/go-microfrontend/host-page/internal/templates/icons"
 )
 
-templ body() {
-	<body>
+templ body(url string) {
+	<body hx-boost="true">
 		@header.Header()
+		@content.Content() {
+			<div
+				hx-get={ url }
+				hx-trigger="revealed"
+				hx-swap="outerHTML"
+				hx-replace-url="true"
+			></div>
+		}
 		@icons.Icons()
 	</body>
 }
